@@ -16,9 +16,10 @@ extra-source-files:  README.md
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     Turtle
+  hs-source-dirs: src
+  exposed-modules:     FRP.Helm.Turtle
   -- other-modules:
   other-extensions:    ViewPatterns, DeriveFunctor
-  build-depends:       base >=4.7 && <4.8, helm >=0.7 && <0.8, free >=4.9 && <4.10
+  build-depends:       base >=4.7 && <4.8, helm >=0.7, free >=4.9 && <4.10
   -- hs-source-dirs:
   default-language:    Haskell2010

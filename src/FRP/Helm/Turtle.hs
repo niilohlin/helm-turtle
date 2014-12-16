@@ -1,5 +1,14 @@
 {-# LANGUAGE ViewPatterns, DeriveFunctor#-}
-module FRP.Helm.Turtle where
+module FRP.Helm.Turtle
+    ( Move(..)
+    , fd
+    , rt
+    , goto
+    , penUp
+    , penDown
+    , setSpeed
+    , done
+    ) where
 
 import FRP.Helm
 import FRP.Helm.Time

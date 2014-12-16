@@ -12,6 +12,9 @@ module FRP.Helm.Turtle
     , penDown
     , setSpeed
     , done
+    , renderTurtle
+    , newTurtle
+    , runTurtle
     ) where
 
 import FRP.Helm
@@ -145,7 +148,7 @@ runTurtle t prog =
 -- Helm crashes if you paint an empty path.
 renderTurtle :: (Int, Int) -> Field -> Element
 renderTurtle (w, h) (Field t path' _) = centeredCollage w h $ if null path'
-    then [drawTurtle ]
+    then [drawTurtle]
     else [drawTurtle, traced (solid white) (path path')]
         where drawTurtle = rotate (degrees (angle t)) $ move (getX t, getY t) $
                 filled white $ polygon $ path [(0, 0), (-20, -5), (-20, 5)]

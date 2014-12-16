@@ -1,4 +1,7 @@
 {-# LANGUAGE ViewPatterns, DeriveFunctor#-}
+{- FieldAction is a Free monad that is parsed by the update
+ - function.
+ -}
 module FRP.Helm.Turtle
     ( Move(..)
     , fd

@@ -2,7 +2,11 @@
 module FRP.Helm.Turtle
     ( Move(..)
     , fd
+    , forward
     , rt
+    , right
+    , lt
+    , left
     , goto
     , penUp
     , penDown
@@ -46,13 +50,22 @@ data Field = Field {turtle :: Turtle, lines :: Path, program :: FieldAction}
 fd :: NumType -> FieldAction
 fd a = liftF (Fd a ())
 
+forward :: NumType -> FieldAction
+forward = fd
+
 {-| Turns the turtle right in degrees. -}
 rt :: NumType -> FieldAction
 rt a = liftF (Rt (-a) ())
 
+right :: NumType -> FieldAction
+right = rt
+
 {-| Turns the turtle left in degrees. -}
 lt :: NumType -> FieldAction
 lt a = rt (-a)
+
+left :: NumType -> FieldAction
+left = lt
 
 {-| Moves the turtle to position x y. -}
 goto :: (NumType, NumType) -> FieldAction

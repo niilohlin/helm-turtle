@@ -33,7 +33,6 @@ koch n
 
 
 main :: IO ()
-main = run defaultConfig $ renderTurtle <~ Window.dimensions
-                         ~~ runTurtle newTurtle myprogram
+main = run defaultConfig $ runTurtle newTurtle myprogram
 
 ```

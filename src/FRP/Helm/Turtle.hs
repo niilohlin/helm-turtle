@@ -3,7 +3,7 @@
  - function.
  -}
 module FRP.Helm.Turtle
-    ( Move(..)
+    ( Move()
     , fd
     , forward
     , rt
@@ -15,13 +15,14 @@ module FRP.Helm.Turtle
     , penDown
     , setSpeed
     , done
-    , renderTurtle
     , newTurtle
     , runTurtle
+    , FieldAction
     ) where
 
 import FRP.Helm
 import FRP.Helm.Time
+import FRP.Helm.Window as Window
 import Control.Monad.Free
 import Prelude hiding (lines)
 
@@ -144,8 +145,8 @@ update _ (Field t' points (Free mv)) =
         (t, p, (Done)) -> Field t p (Free Done)
 update _ self@(Field _ _ (Pure _)) = self
 
-runTurtle :: Turtle -> Free Move () -> Signal Field
-runTurtle t prog =
+runTurtle :: Turtle -> Free Move () -> Signal Element
+runTurtle t prog = renderTurtle <~ Window.dimensions ~~
     foldp update (Field t [] prog) (fps 60)
 
 -- Helm crashes if you paint an empty path.
